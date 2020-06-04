@@ -1,0 +1,6 @@
+com.spotify.sdk.android.auth
+id com_spotify_sdk_login_webview
+id com_spotify_sdk_login_webview_container
+layout com_spotify_sdk_login_activity
+layout com_spotify_sdk_login_dialog
+string com_spotify_sdk_login_progress

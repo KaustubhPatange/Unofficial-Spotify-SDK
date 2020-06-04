@@ -1,0 +1,3 @@
+rootProject.name='SpotifySDK'
+include ':app'
+include ':app:spotifyapi'
