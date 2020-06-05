@@ -1,9 +1,8 @@
 package com.kpstv.spotifyapi.data.models
 
-
-data class AlbumTrack(
+data class ShowEpisodes(
     val href: String,
-    val items: List<AlbumItem>,
+    val items: List<ShowItem>,
     val limit: Int,
     val next: String,
     val offset: Int,

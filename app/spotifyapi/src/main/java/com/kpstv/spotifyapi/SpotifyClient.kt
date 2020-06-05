@@ -10,9 +10,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.spotify.sdk.android.auth.AuthorizationClient
-import com.spotify.sdk.android.auth.AuthorizationRequest
-import com.spotify.sdk.android.auth.AuthorizationResponse
+import com.kpstv.spotifyapi.enumerations.Scopes
 import com.spotify.sdk.android.auth.LoginActivity
 import okhttp3.*
 import java.io.IOException
@@ -55,8 +53,8 @@ class SpotifyClient(
      * This flow will generate access_token and refresh_token.
      */
     fun invokeAuthorizationFlow(): Unit = with(activity) {
-        val builder = AuthorizationRequest.Builder(
-            CLIENT_ID, AuthorizationResponse.Type.CODE,
+        val builder = com.spotify.sdk.android.auth.AuthorizationRequest.Builder(
+            CLIENT_ID, com.spotify.sdk.android.auth.AuthorizationResponse.Type.CODE,
             REDIRECT_URI
         )
 
@@ -86,16 +84,16 @@ class SpotifyClient(
         responseAction: ResponseAction<AuthResponse>?
     ) {
         if (requestCode == AUTHORIZATION_REQUEST_CODE) {
-            val response = AuthorizationClient.getResponse(resultCode, data)
+            val response = com.spotify.sdk.android.auth.AuthorizationClient.getResponse(resultCode, data)
             when (response.type) {
-                AuthorizationResponse.Type.CODE -> {
+                com.spotify.sdk.android.auth.AuthorizationResponse.Type.CODE -> {
                     val authToken = response.code
                     makeAResponse(
                         "grant_type=authorization_code&code=$authToken&redirect_uri=$REDIRECT_URI"
                         , responseAction
                     )
                 }
-                AuthorizationResponse.Type.ERROR -> {
+                com.spotify.sdk.android.auth.AuthorizationResponse.Type.ERROR -> {
                     responseAction?.onError(Exception("Authentication is denied"))
                 }
                 else ->
@@ -121,7 +119,7 @@ class SpotifyClient(
         }
 
         makeAResponse(
-            "grant_type=refresh_token&refresh_token=${refreshToken}&redirect_uri=${REDIRECT_URI}",
+            "grant_type=refresh_token&refresh_token=${refToken}&redirect_uri=${REDIRECT_URI}",
             responseAction
         )
 
@@ -290,7 +288,7 @@ class SpotifyClient(
             this@Builder
         }
 
-        fun setScopes(vararg scopes: SpotifyScopes) = with(scopes) {
+        fun setScopes(vararg scopes: Scopes) = with(scopes) {
             val list = ArrayList<String>()
             for (scope in scopes) {
                 list.add(scope.scope)
