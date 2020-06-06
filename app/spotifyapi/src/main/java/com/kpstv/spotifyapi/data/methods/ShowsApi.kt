@@ -19,7 +19,7 @@ class ShowsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/shows/${id}",
                 type = Show::class.java,
                 responseAction = responseAction
@@ -37,7 +37,7 @@ class ShowsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/shows?ids=${ids.joinToString(",")}",
                 type = Shows::class.java,
                 responseAction = responseAction
@@ -55,7 +55,7 @@ class ShowsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/shows/${id}/episodes?limit=${limit}&offset=${offset}",
                 type = ShowEpisodes::class.java,
                 responseAction = responseAction

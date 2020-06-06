@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kpstv.spotifyapi.AuthResponse
 import com.kpstv.spotifyapi.ResponseAction
 import com.kpstv.spotifyapi.SpotifyClient
-import com.kpstv.spotifyapi.data.models.Album
-import com.kpstv.spotifyapi.data.models.Search
+import com.kpstv.spotifyapi.data.models.Browse
 import com.kpstv.spotifyapi.enumerations.Scopes
-import com.kpstv.spotifyapi.enumerations.Type
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,14 +52,15 @@ class MainActivity : AppCompatActivity() {
 
     fun connectClick(view: View) {
         // Album id = 0sNOF9WDwhWunNAHPD3Baj
-        client.methods.searchApi.searchItem(
-            "trap",
-            arrayOf(Type.TRACK),
-            2,
-            5,
-            object : ResponseAction<Search> {
-                override fun onComplete(t: Search) {
-                    Toast.makeText(this@MainActivity, "Name: ${t.tracks?.items?.get(0)?.name}", Toast.LENGTH_SHORT).show()
+
+        client.methods.browseApi.getBrowseCategoriesList(10, 5, null, null,
+            object : ResponseAction<Browse> {
+                override fun onComplete(t: Browse) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Name: ${t.categories.total}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 override fun onError(e: Exception) {
@@ -69,6 +68,35 @@ class MainActivity : AppCompatActivity() {
                         .show()
                 }
             })
+        /* client.methods.tracksApi.getTrack("7xGfFoTpQ2E7fRF5lN10tr",
+             object : ResponseAction<com.kpstv.spotifyapi.data.models.Track> {
+                 override fun onComplete(t: Track) {
+                     Toast.makeText(this@MainActivity, "Name: ${t.name}", Toast.LENGTH_SHORT).show()
+                 }
+                 override fun onError(e: Exception) {
+                     Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT)
+                         .show()
+                 }
+             })
+         client.methods.searchApi.searchItem(
+             "trap",
+             arrayOf(Type.TRACK),
+             2,
+             5,
+             object : ResponseAction<Search> {
+                 override fun onComplete(t: Search) {
+                     Toast.makeText(
+                         this@MainActivity,
+                         "Name: ${t.tracks?.items?.get(0)?.name}",
+                         Toast.LENGTH_SHORT
+                     ).show()
+                 }
+
+                 override fun onError(e: Exception) {
+                     Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT)
+                         .show()
+                 }
+             })*/
     }
 
     //Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()

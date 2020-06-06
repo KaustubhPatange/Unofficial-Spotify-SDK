@@ -17,7 +17,7 @@ class TracksApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/tracks?ids=${ids.joinToString(",")}",
                 type = Tracks::class.java,
                 responseAction = responseAction
@@ -35,7 +35,7 @@ class TracksApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/audio-analysis/$id",
                 type = AudioAnalysis::class.java,
                 responseAction = responseAction
@@ -53,7 +53,7 @@ class TracksApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/audio-features/$id",
                 type = AudioFeature::class.java,
                 responseAction = responseAction
@@ -71,7 +71,7 @@ class TracksApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/tracks/$id",
                 type = Track::class.java,
                 responseAction = responseAction
@@ -89,7 +89,7 @@ class TracksApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/audio-features?id=${ids.joinToString(",")}",
                 type = AudioFeatures::class.java,
                 responseAction = responseAction

@@ -10,4 +10,6 @@ class Methods(
     val searchApi = SearchApi(client)
     val showsApi = ShowsApi(client)
     val episodesApi = EpisodesApi(client)
+    val playlistApi = PlaylistApi(client)
+    val browseApi = BrowseApi(client)
 }

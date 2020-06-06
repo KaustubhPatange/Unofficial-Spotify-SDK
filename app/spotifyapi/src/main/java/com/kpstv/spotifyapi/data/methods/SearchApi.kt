@@ -26,7 +26,7 @@ class SearchApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/search?q=${URLEncoder.encode(
                     query,
                     "UTF-8"

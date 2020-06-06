@@ -20,7 +20,7 @@ class ArtistApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/artists?ids=${ids.joinToString(",")}",
                 type = Artists::class.java,
                 responseAction = responseAction
@@ -38,7 +38,7 @@ class ArtistApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/artists/${id}",
                 type = Artist::class.java,
                 responseAction = responseAction
@@ -63,7 +63,7 @@ class ArtistApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/artists/${id}/albums?limit=${limit}&offset=${offset}&include_groups=${groups.joinToString(
                     ","
                 ) { it.query }}",

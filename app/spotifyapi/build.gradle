@@ -19,7 +19,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
-        versionName "0.02"
+        versionName "0.12"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -46,7 +46,8 @@ dependencies {
 
     implementation 'androidx.activity:activity-ktx:1.2.0-alpha05'
 
-    implementation files('libs/spotify_auth.aar')
+    implementation 'com.spotify.android:auth:1.1.0'
+  //  implementation files('libs/spotify_auth.aar')
    // compileOnly(name:'spotify_auth', ext:'aar')
 
     // OkHttp

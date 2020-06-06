@@ -20,7 +20,7 @@ class AlbumsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/albums?ids=${ids.joinToString(",")}",
                 type = Albums::class.java,
                 responseAction = responseAction
@@ -38,7 +38,7 @@ class AlbumsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/albums/${id}",
                 type = Album::class.java,
                 responseAction = responseAction
@@ -57,7 +57,7 @@ class AlbumsApi(
                 return@commonWorkFlow
             }
 
-            client.executeClient(
+            client.executeGETMethod(
                 url = "https://api.spotify.com/v1/albums/${id}/tracks?limit=${limit}&offset=${offset}",
                 type = AlbumTrack::class.java,
                 responseAction = responseAction
