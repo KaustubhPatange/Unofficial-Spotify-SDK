@@ -17,7 +17,7 @@ The library overcomes some limitation of official sdk, some of them are listed b
 - Some Routes to directly make a call to api (eg: [TracksApi](https://developer.spotify.com/documentation/web-api/reference-beta/#category-tracks), [AlbumsApi](https://developer.spotify.com/documentation/web-api/reference-beta/#category-albums), etc).
 - Automatic _generation_ of _access token_ when making a **routed call**.
 - Automatic **refreshing** of _access token_ so you don't have to do it manually.
-- Expicitly specify result callback _(does not depend on calling activity's onActivityResult(), thanks to [ActivityResultContract](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.StartActivityForResult))_.
+- Explicitly specify result callback _(does not depend on calling activity's onActivityResult(), thanks to [ActivityResultContract](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.StartActivityForResult))_.
 - More...
 
 ## Download
