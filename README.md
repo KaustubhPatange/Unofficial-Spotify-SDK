@@ -3,7 +3,7 @@
 ![CircleCI](https://img.shields.io/circleci/build/github/KaustubhPatange/Unofficial-Spotify-SDK/master)
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.kaustubhpatange/spotifyapi)
 
-The library provides a wrapper over **spotify-auth** api (which is a part of [official-sdk](https://github.com/spotify/android-sdk)) to handle _automatic authentication_ as well as to yield some certain routes provided by [web-api](https://developer.spotify.com/documentation/web-api/reference-beta/).
+The library provideps a wrapper over **spotify-auth** api (which is a part of [official-sdk](https://github.com/spotify/android-sdk)) to handle _automatic authentication_ as well as to yield some certain routes provided by [web-api](https://developer.spotify.com/documentation/web-api/reference-beta/).
 
 > _The library only includes spotify-auth library as a part of this sdk, for spotify-app-remote you need to add it manually._
 
@@ -41,10 +41,10 @@ Browse from the following topics,
   - [Adding Dependency](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Getting-Started#adding-dependency)
   - [Creating Spotify client](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Getting-Started#creating-a-client)
   - [Making API calls](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Getting-Started#making-an-api-call)
-- [More about library](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Extending-Library)
-  - [Limitations](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Extending-Library#limitation)
-  - [Understanding](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Extending-Library#understanding)
-  - [Extending Library](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/Extending-Library#extending-library)
+- [More about library](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/More-about-library)
+  - [Limitations](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/More-about-library#limitation)
+  - [Understanding](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/More-about-library#understanding)
+  - [Extending Library](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/wiki/More-about-library#extending-library)
 
 ## Requirements
 
