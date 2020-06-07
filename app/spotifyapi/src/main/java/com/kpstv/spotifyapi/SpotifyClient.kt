@@ -17,6 +17,7 @@ import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class SpotifyClient(
     private val activity: ComponentActivity
 ) {
@@ -84,7 +85,10 @@ class SpotifyClient(
         responseAction: ResponseAction<AuthResponse>?
     ) {
         if (requestCode == AUTHORIZATION_REQUEST_CODE) {
-            val response = com.spotify.sdk.android.authentication.AuthenticationClient.getResponse(resultCode, data)
+            val response = com.spotify.sdk.android.authentication.AuthenticationClient.getResponse(
+                resultCode,
+                data
+            )
             when (response.type) {
                 com.spotify.sdk.android.authentication.AuthenticationResponse.Type.CODE -> {
                     val authToken = response.code
@@ -160,17 +164,32 @@ class SpotifyClient(
     fun <T> executePOSTMethod(
         url: String,
         type: Class<T>,
+        bodyJSON: String,
         responseAction: ResponseAction<T>
     ) {
-        commonMethod("POST", url, type, responseAction)
+        val body = RequestBody.create(MediaType.parse("application/json"), bodyJSON)
+        commonMethod(
+            method = "POST",
+            url = url,
+            body = body,
+            type = type,
+            responseAction = responseAction)
     }
 
     fun <T> executePUTMethod(
         url: String,
         type: Class<T>,
+        bodyJSON: String,
         responseAction: ResponseAction<T>
     ) {
-        commonMethod("PUT", url, type, responseAction)
+        val body = RequestBody.create(MediaType.parse("application/json"), bodyJSON)
+        commonMethod(
+            method = "PUT",
+            url = url,
+            body = body,
+            type = type,
+            responseAction = responseAction
+        )
     }
 
     fun <T> executeDELETEMethod(
@@ -178,7 +197,11 @@ class SpotifyClient(
         type: Class<T>,
         responseAction: ResponseAction<T>
     ) {
-        commonMethod("DELETE", url, type, responseAction)
+        commonMethod(
+            method = "DELETE",
+            url = url,
+            type = type,
+            responseAction = responseAction)
     }
 
     fun <T> executeGETMethod(
@@ -186,15 +209,25 @@ class SpotifyClient(
         type: Class<T>,
         responseAction: ResponseAction<T>
     ) {
-        commonMethod("GET", url, type, responseAction)
+        commonMethod(
+            method = "GET",
+            url = url,
+            type = type,
+            responseAction = responseAction)
     }
 
-    fun<T> commonMethod(method: String, url: String, type: Class<T>, responseAction: ResponseAction<T>) {
+    private fun <T> commonMethod(
+        method: String,
+        url: String,
+        body: RequestBody? = null,
+        type: Class<T>,
+        responseAction: ResponseAction<T>
+    ) {
         val client = OkHttpClient().newBuilder()
             .build()
         val request: Request = Request.Builder()
             .url(url)
-            .method(method, null)
+            .method(method, body)
             .addHeader(
                 "Authorization",
                 "Bearer $accessToken"
