@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kpstv.spotifyapi.enumerations.Scopes
-import com.spotify.sdk.android.authentication.LoginActivity
+import com.spotify.sdk.android.auth.LoginActivity
 import okhttp3.*
 import java.io.IOException
 import java.util.*
@@ -54,8 +54,8 @@ class SpotifyClient(
      * This flow will generate access_token and refresh_token.
      */
     fun invokeAuthorizationFlow(): Unit = with(activity) {
-        val builder = com.spotify.sdk.android.authentication.AuthenticationRequest.Builder(
-            CLIENT_ID, com.spotify.sdk.android.authentication.AuthenticationResponse.Type.CODE,
+        val builder = com.spotify.sdk.android.auth.AuthorizationRequest.Builder(
+            CLIENT_ID, com.spotify.sdk.android.auth.AuthorizationResponse.Type.CODE,
             REDIRECT_URI
         )
 
@@ -85,19 +85,19 @@ class SpotifyClient(
         responseAction: ResponseAction<AuthResponse>?
     ) {
         if (requestCode == AUTHORIZATION_REQUEST_CODE) {
-            val response = com.spotify.sdk.android.authentication.AuthenticationClient.getResponse(
+            val response = com.spotify.sdk.android.auth.AuthorizationClient.getResponse(
                 resultCode,
                 data
             )
             when (response.type) {
-                com.spotify.sdk.android.authentication.AuthenticationResponse.Type.CODE -> {
+                com.spotify.sdk.android.auth.AuthorizationResponse.Type.CODE -> {
                     val authToken = response.code
                     makeAResponse(
                         "grant_type=authorization_code&code=$authToken&redirect_uri=$REDIRECT_URI"
                         , responseAction
                     )
                 }
-                com.spotify.sdk.android.authentication.AuthenticationResponse.Type.ERROR -> {
+                com.spotify.sdk.android.auth.AuthorizationResponse.Type.ERROR -> {
                     responseAction?.onError(Exception("Authentication is denied"))
                 }
                 else ->
