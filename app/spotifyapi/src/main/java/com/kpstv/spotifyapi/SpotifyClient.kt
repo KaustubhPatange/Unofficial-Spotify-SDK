@@ -29,7 +29,7 @@ class SpotifyClient(
     private var SCOPES: Array<out String>? = null
     private var RESPONSE_ACTION: ResponseAction<AuthResponse>? = null
 
-    private var accessToken: String = "s"
+    private var accessToken: String = ""
 
     val methods = Methods(this)
 
