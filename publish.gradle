@@ -49,6 +49,13 @@ signing {
     sign publishing.publications
 }
 
+nexusStaging {
+    packageGroup = PUBLISH_GROUP_ID
+    stagingProfileId = 'c51d602c035a' // dummy example, replace with your own!
+    username = ossrhUsername
+    password = ossrhPassword
+}
+
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.
 afterEvaluate {
