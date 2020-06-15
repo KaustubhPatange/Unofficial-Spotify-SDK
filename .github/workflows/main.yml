@@ -1,8 +1,7 @@
 name: Build and Release
 on: 
   push:
-    branches:
-      - action-test
+    branches: [ action-test ]
 
 jobs:
   test-build:
