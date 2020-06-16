@@ -1,6 +1,6 @@
 # Unofficial-Spotify-SDK
 
-![CircleCI](https://img.shields.io/circleci/build/github/KaustubhPatange/Unofficial-Spotify-SDK/master)
+![badge](https://action-badges.now.sh/KaustubhPatange/Unofficial-Spotify-SDK?action=Build-and-Release)
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.kaustubhpatange/spotifyapi)
 
 The library provideps a wrapper over **spotify-auth** api (which is a part of [official-sdk](https://github.com/spotify/android-sdk)) to handle _automatic authentication_ as well as to yield some certain routes provided by [web-api](https://developer.spotify.com/documentation/web-api/reference-beta/).

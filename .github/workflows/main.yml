@@ -33,4 +33,3 @@ jobs:
         run: ./gradlew closeRepository
       - name: Release repository
         run: ./gradlew releaseRepository
-        
