@@ -6,16 +6,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: Set up JDK 1.8
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: 1.8
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
       - name: Creating local properties file
         run: echo signing.keyId=${{ secrets.SIGNING_KEYID }} >> local.properties
       - run: echo signing.password=${{ secrets.SIGNING_PASSWORD }} >> local.properties
       - run: echo ossrhUsername=${{ secrets.OSSRH_USERNAME }} >> local.properties 
       - run: echo ossrhPassword=${{ secrets.OSSRH_PASSWORD }} >> local.properties 
-#      - run: echo signing.secretKeyRingFile=key.gpg >> local.properties         
+      - run: echo signing.secretKeyRingFile=key.gpg >> local.properties         
       - name: Creating key.gpg
         id: write_file
         uses: timheuer/base64-to-file@v1.0.3
@@ -24,7 +24,11 @@ jobs:
           encodedString: ${{ secrets.SIGNING_KEY_GPG }}
       - run: echo signing.secretKeyRingFile=${{ steps.write_file.outputs.filePath }} >> local.properties      
       - run: type local.properties  
-     # - run: chmod +x gradlew
-      #- name: Build Gradle
-       # run: ./gradlew build
+      - run: chmod +x gradlew
+      - name: Build Gradle
+        run: ./gradlew build
+      - name: Stage repository to nexus
+        run: ./gradlew app:spotifyapi:publishReleasePublicationToSonatypeRepository
+      - name: Close & release statging repository
+        run: ./gradlew closeAndReleaseRepository
         
