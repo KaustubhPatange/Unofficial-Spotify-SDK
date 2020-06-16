@@ -15,13 +15,15 @@ jobs:
       - run: echo signing.password=${{ secrets.SIGNING_PASSWORD }} >> local.properties
       - run: echo ossrhUsername=${{ secrets.OSSRH_USERNAME }} >> local.properties 
       - run: echo ossrhPassword=${{ secrets.OSSRH_PASSWORD }} >> local.properties 
-      - run: echo signing.secretKeyRingFile=key.gpg >> local.properties         
+#      - run: echo signing.secretKeyRingFile=key.gpg >> local.properties         
       - name: Creating key.gpg
+        id: write_file
         uses: timheuer/base64-to-file@v1.0.3
         with:
-          fileName: 'd:\a\Unofficial-Spotify-SDK\Unofficial-Spotify-SDK\key.gpg'
+          fileName: 'key.gpg'
           encodedString: ${{ secrets.SIGNING_KEY_GPG }}
-      - run: dir
+      - run: echo signing.secretKeyRingFile=${{ steps.write_file.outputs.filePath }} >> local.properties      
+      - run: type local.properties  
      # - run: chmod +x gradlew
       #- name: Build Gradle
        # run: ./gradlew build
