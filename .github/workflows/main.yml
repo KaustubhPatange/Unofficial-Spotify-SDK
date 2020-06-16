@@ -20,7 +20,7 @@ jobs:
         uses: timheuer/base64-to-file@v1.0.3
         with:
           fileName: 'key.gpg'
-          encodedString: ${{ secrets.SOME_ENCODED_STRING }}
+          encodedString: ${{ secrets.SIGNING_KEY_GPG }}
       - run: dir
      # - run: chmod +x gradlew
       #- name: Build Gradle
