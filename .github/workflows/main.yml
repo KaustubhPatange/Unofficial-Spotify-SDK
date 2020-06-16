@@ -10,6 +10,15 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - run: chmod +x gradlew
-      - name: Build Gradle
-        run: ./gradlew build
+      - name: Creating local properties file
+        run: echo signing.keyId=${{ secrets.SIGNING_KEYID }} >> local.properties
+      - run: echo signing.password=${{ secrets.SIGNING_PASSWORD }} >> local.properties
+      - run: echo ossrhUsername=${{ secrets.OSSRH_USERNAME }} >> local.properties 
+      - run: echo ossrhPassword=${{ secrets.OSSRH_PASSWORD }} >> local.properties          
+      - name: Show me directories
+        run: dir
+      - run: type local.properties
+     # - run: chmod +x gradlew
+      #- name: Build Gradle
+       # run: ./gradlew build
+        
