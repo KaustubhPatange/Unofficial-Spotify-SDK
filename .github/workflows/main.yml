@@ -17,9 +17,9 @@ jobs:
       - run: echo ossrhPassword=${{ secrets.OSSRH_PASSWORD }} >> local.properties 
       - run: echo signing.secretKeyRingFile=key.gpg >> local.properties         
       - name: Creating key.gpg
-        uses: timheuer/base64-to-file@v1.0.3
+        uses: RollyPeres/base64-to-path@v1
         with:
-          fileName: 'key.gpg'
+          fileName: ${{ github.workspace }}/key.gpg
           encodedString: ${{ secrets.SIGNING_KEY_GPG }}
       - run: dir
      # - run: chmod +x gradlew
