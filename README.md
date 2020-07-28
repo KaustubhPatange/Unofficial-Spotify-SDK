@@ -3,7 +3,7 @@
 ![build](https://github.com/KaustubhPatange/Unofficial-Spotify-SDK/workflows/build/badge.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.kaustubhpatange/spotifyapi)
 
-The library provideps a wrapper over **spotify-auth** api (which is a part of [official-sdk](https://github.com/spotify/android-sdk)) to handle _automatic authentication_ as well as to yield some certain routes provided by [web-api](https://developer.spotify.com/documentation/web-api/reference-beta/).
+The library provides a wrapper over **spotify-auth** api (which is a part of [official-sdk](https://github.com/spotify/android-sdk)) to handle _automatic authentication_ as well as to yield some certain routes provided by [web-api](https://developer.spotify.com/documentation/web-api/reference-beta/).
 
 > _The library only includes spotify-auth library as a part of this sdk, for spotify-app-remote you need to add it manually._
 
